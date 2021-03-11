@@ -1,24 +1,24 @@
-const express = require('express');
+import express from 'express';
 let app = express();
-const path = require('path');
-const volleyball = require('volleyball');
-const routers = require("./routers");
+import path from 'path';
+import volleyball from 'volleyball';
+import routers from "./routers/index";
 
-const config = require('./config');
-const bodyParser = require('body-parser');
-const { createServer } = require('http');
-const static = require('node-static');
+import config from './config';
+import bodyParser from 'body-parser';
+import { createServer } from 'http';
 
+const currentRoot = process.cwd();
 
 app.use(volleyball);
-app.set('views', config.paths.server_pages);
 app.set('view engine', 'pug');
+app.set('views', `${currentRoot}${config.paths.server_pages}`);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.use(express.static(path.resolve(__dirname, '..', 'dist')));
+app.use(express.static(`${currentRoot}/dist`));
 app.use(function (err, req, res, next) {
   res.status(err.status || 500).send(err.message || 'Internal server error.');
 });

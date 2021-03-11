@@ -8,6 +8,6 @@ const wrapper = document.getElementById("root");
 
 hydrate(
     <App>
-        <ClientRoutes/>
+        <ClientRoutes initState={window.initData}/>
     </App>
 ,wrapper);

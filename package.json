@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf ./dist/",
-    "server": "node ./server/app.js",
+    "clean": "rimraf ./dist/ && rimraf ./server/main-server.js",
+    "server": "node ./server/main-server.js",
     "start": "webpack --mode development --env=Development --watch",
     "prod": "webpack --mode production --env=Production"
   },
@@ -38,7 +38,8 @@
     "styled-loader": "0.0.0",
     "volleyball": "^1.5.1",
     "webpack": "4.29.6",
-    "webpack-cli": "3.3.0"
+    "webpack-cli": "3.3.0",
+    "webpack-node-externals": "^2.5.2"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.12.0"

@@ -1,18 +1,12 @@
-import React, { Component } from 'react';
+import React, { useReducer } from 'react';
 import PropTypes from 'prop-types';
 
-class App extends Component {
-    render() {
-        return (
-            <div>
-                {this.props.children}
-            </div>
-        );
-    }
+const App = (props) => {    
+    return (
+        <div>
+            {props.children}
+        </div>
+    );
 }
-
-App.propTypes = {
-
-};
 
 export default App;
