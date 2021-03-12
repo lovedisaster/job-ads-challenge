@@ -1,5 +1,5 @@
 import {hydrate} from 'react-dom';
-import App from './App';
+import StateProvider from './StateProvider';
 import {ClientRoutes} from './ClientRoutes'
 import React from 'react';
 import {Link} from 'react-router-dom';
@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 const wrapper = document.getElementById("root");
 
 hydrate(
-    <App>
-        <ClientRoutes initState={window.initData}/>
-    </App>
+    <StateProvider initState={window.initData}>
+        <ClientRoutes/>
+    </StateProvider>
 ,wrapper);

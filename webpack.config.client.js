@@ -1,8 +1,14 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
 const path = require('path');
+const webpack = require('webpack');
+const GlobalStyle = require('./src/globalStyles/GlobalStyles');
 
 module.exports = env => {
+    const webpackDefinPlugin = new webpack.DefinePlugin({
+        ENV: JSON.stringify(env),
+        GS: JSON.stringify(GlobalStyle),
+    });
+
     return {
         entry: {
             "main": ["./src/Client.js"]
@@ -38,6 +44,10 @@ module.exports = env => {
                     ]
                 }
             ]
-        }
+        },
+        plugins: [
+            new MiniCssExtractPlugin(),
+            webpackDefinPlugin,
+        ]
     }
 }

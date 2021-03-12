@@ -1,12 +1,17 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import {Heading} from './Home.style';
+import {StateContext} from '../../StateProvider';
+import HomePage from './HomePage';
 
 const Home = props => {
     return (
-        <div>
-            <Heading>This is home page</Heading>
-        </div>
+        <StateContext.Consumer>
+            {
+                context => {
+                    return <HomePage context={context}/>
+                }
+            }
+        </StateContext.Consumer>
     );
 };
 
