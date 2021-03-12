@@ -1,7 +1,13 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
+const webpack = require('webpack');
+const GlobalStyle = require('./src/globalStyles/GlobalStyles');
 
 module.exports = env => {
+    const webpackDefinPlugin = new webpack.DefinePlugin({
+        ENV: JSON.stringify(env),
+        GS: JSON.stringify(GlobalStyle),
+    });
     return {
         entry: {
             "main-server": ["./server/app.js"]
@@ -28,6 +34,9 @@ module.exports = env => {
                     use: 'ignore-loader'
                 }
             ]
-        }
+        },
+        plugins: [
+            webpackDefinPlugin,
+        ]
     }
 }

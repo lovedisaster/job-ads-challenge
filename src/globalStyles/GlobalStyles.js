@@ -16,7 +16,9 @@ var GlobalStyle = {
       primaryDark:'#cb6200',
       secondary:'#007cc2',
       disabled:'#dddddd',
-      warning: '#ed1c24'
+      warning: '#ed1c24',
+      primaryBlue:'#007cc2',
+      primaryBlueDark:'#00639a',
     }, 
     fontSize: {
       desktop:{
