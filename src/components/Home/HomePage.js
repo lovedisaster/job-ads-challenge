@@ -7,6 +7,7 @@ import ActionTypes from "../../actions/ActionTypes";
 const HomePage = (props) => {
   const buyNowOnclick = useCallback((stepData) => {
     props.context.dispatch({type: ActionTypes.SAVE_STEP_DATA, payload:stepData});
+    props.context.dispatch({type: ActionTypes.ADD_TO_CART, payload:stepData});
     props.context.dispatch({type: ActionTypes.NEXT_STEP});
   });
 

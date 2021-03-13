@@ -1,6 +1,6 @@
-export const Login = (userName) => {
+export const Login = (clients, userName) => {
     return new Promise((res, rej) => {
-        res(["SB", "ACR", "MY"].includes(userName));
+        res(clients.includes(userName));
         rej(new Error("Log in error"));
     })
 }

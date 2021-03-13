@@ -6,7 +6,7 @@ import InputField from "../shared/atoms/inputs/Inputs";
 import { Button } from "../shared/atoms/buttons/Buttons";
 import { SignInForm } from "./SingIn.styles";
 import { Login } from "../../api/ApiConsumer";
-import { SetAuth, GetAuth } from "../../utils/CommonUtils";
+import { SetAuth, GetSessionStorage } from "../../utils/CommonUtils";
 
 const SingInPage = (props) => {
   let userNameRef = useRef(null);
@@ -29,7 +29,8 @@ const SingInPage = (props) => {
   };
 
   const logIn = () => {
-    Login(user)
+    const clients = props.context.state.initState.clients.map(c => c.clientCode);
+    Login(clients, user)
       .then((result) => {
         if (result) {
             SetAuth();
@@ -44,7 +45,7 @@ const SingInPage = (props) => {
   };
 
   useEffect(() => {
-      if(GetAuth()) {
+      if(GetSessionStorage("isAuth") && GetSessionStorage("isAuth").isAuth) {
         props.context.dispatch({ type: ActionTypes.NEXT_STEP });
       }
   },[])
@@ -64,8 +65,10 @@ const SingInPage = (props) => {
       <div className="row text-center">
         <SignInForm>
           <small>
-            Available accounts for now : SB (SecondBite) , ACR (Axil Coffee
-            Roasters) and MY (MYER)
+            Available accounts for now : 
+            {
+                props.context.state.initState.clients.map(client => `${client.clientCode} (${client.fullName}) | `)
+            }
           </small>
 
           <InputField

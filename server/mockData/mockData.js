@@ -4,6 +4,11 @@ const DEALTYPES = {
   }
   
 export const initState = {
+    clients: [
+        {clientCode: "SB", fullName: "SecondBite"},
+        {clientCode: "ACR", fullName: "Axil Coffee Roasters"},
+        {clientCode: "MY", fullName: "MYER"}
+    ],
     rules: [
       {
         clientCode: "SB",

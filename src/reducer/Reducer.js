@@ -1,5 +1,5 @@
 import ActionTypes from "../actions/ActionTypes";
-import { DeepClone } from "../utils/CommonUtils";
+import { DeepClone, SetShoppingCart } from "../utils/CommonUtils";
 import { GetStepByIndex } from "../StepConfig";
 
 const Reducer = (state, action) => {
@@ -14,6 +14,11 @@ const Reducer = (state, action) => {
         }
         return s;
       });
+      return newState;
+
+    case ActionTypes.ADD_TO_CART: 
+      newState.shoppingCart.push(action.payload);
+      SetShoppingCart(newState.shoppingCart);
       return newState;
 
     case ActionTypes.NEXT_STEP:
