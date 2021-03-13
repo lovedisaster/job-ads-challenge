@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withRouter} from 'react-router';
 import SingInPage from './SingInPage';
 import {StateContext} from '../../StateProvider';
 
@@ -20,4 +19,4 @@ SingIn.propTypes = {
     
 };
 
-export default withRouter(SingIn);
+export default SingIn;

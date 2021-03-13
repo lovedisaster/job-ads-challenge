@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {
   SolidButton,
   BlankButton,
-} from "./StyledComponents";
+} from "./button.styles";
 
 const preventDoubleClick = (target, handler) => {
   new Promise((res, rej) => {

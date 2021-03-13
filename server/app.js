@@ -12,7 +12,7 @@ const currentRoot = process.cwd();
 
 app.use(volleyball);
 app.set('view engine', 'pug');
-app.set('views', `${currentRoot}${config.paths.server_pages}`);
+app.set('views', `${currentRoot}${config.paths.serverPages}`);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true

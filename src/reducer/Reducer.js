@@ -28,6 +28,11 @@ const Reducer = (state, action) => {
       newState.currentPath = cs.path;
       return newState;
 
+    case ActionTypes.GO_TO_STEP:
+      newState.currentStep = action.payload;
+      cs = GetStepByIndex(action.payload, newState.stepState );
+      newState.currentPath = cs.path;
+      return newState;
     default:
       return state;
   }

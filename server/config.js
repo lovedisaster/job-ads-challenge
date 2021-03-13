@@ -3,7 +3,7 @@ const appRoot = path.resolve(__dirname);
 
 const env_config = {
     paths: {
-        server_pages: path.join(appRoot, 'server/server_pages')
+        serverPages: path.join(appRoot, 'server/serverPages')
     },
     isProd: (process.env.NODE_ENV === 'production')
 };
