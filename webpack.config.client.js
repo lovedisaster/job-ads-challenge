@@ -7,6 +7,7 @@ module.exports = env => {
     const webpackDefinPlugin = new webpack.DefinePlugin({
         ENV: JSON.stringify(env),
         GS: JSON.stringify(GlobalStyle),
+        CLIENT:JSON.stringify(true)
     });
 
     return {

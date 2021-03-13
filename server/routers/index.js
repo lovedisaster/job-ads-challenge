@@ -57,6 +57,16 @@ const routers = function(app) {
         res.render('index', { ReactDom : ReactDomString, initData: JSON.stringify(initState)});
         next();
       });
+      app.use("/signin",function (req, res, next) {
+        res.redirect('/home');
+        next();
+      });
+      app.use("/checkout",function (req, res, next) {
+        res.redirect('/home');
+        next();
+      });
+
+
       return app;
   }
 

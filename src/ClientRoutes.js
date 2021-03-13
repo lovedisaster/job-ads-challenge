@@ -1,16 +1,27 @@
 import React from 'react';
-import { BrowserRouter,Switch, Route } from 'react-router-dom';
+import { Router,Switch, Route } from 'react-router-dom';
 import Home from './components/home/Home';
+import SingIn from './components/singin/SingIn';
+import CheckOut from './components/checkout/CheckOut';
+import { createBrowserHistory } from 'history';
 
-export const ClientRoutes = (props) => {
+export let history = CLIENT ? createBrowserHistory() : {};
+
+export const ClientRoutes = () => {
     return(
-        <BrowserRouter>
+        <Router history={history}>
             <Switch>
                 <Route exact={true} path="/home">
-                    <Home initState={props.initState}/>
+                    <Home/>
+                </Route>
+                <Route exact={true} path="/signin" >
+                    <SingIn/>
+                </Route>
+                <Route exact={true} path="/checkout">
+                    <CheckOut/>
                 </Route>
             </Switch>
-        </BrowserRouter>
+        </Router>
     )
 }
 

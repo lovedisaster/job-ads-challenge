@@ -1,23 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {withRouter} from 'react-router';
+import SingInPage from './SingInPage';
 import {StateContext} from '../../StateProvider';
-import HomePage from './HomePage';
 
-const Home = props => {
+const SingIn = props => {
     return (
         <StateContext.Consumer>
             {
                 context => {
-                    return <HomePage context={context}/>
+                    return <SingInPage context={context}/>
                 }
             }
         </StateContext.Consumer>
     );
 };
 
-Home.propTypes = {
-    initData:PropTypes.object
+SingIn.propTypes = {
+    
 };
 
-export default Home;
-
+export default withRouter(SingIn);
