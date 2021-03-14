@@ -18,6 +18,7 @@ import {
   GetSessionStorage,
   SetSessionStorageRule,
 } from "../../utils/CommonUtils";
+import {mapCartListByRules, getTotal} from './CheckOutFunctions';
 
 const CheckOutPage = (props) => {
   let [rules, setRules] = useState(null);
@@ -27,29 +28,7 @@ const CheckOutPage = (props) => {
     props.dispatch({ type: ActionTypes.GO_TO_STEP, payload: 1 });
   });
 
-  const mapCartListByRules = (cartList, rules) => {
-    let newCartList = DeepClone(cartList);
-    rules.forEach(r => {
-        // Collect all the matching ones to apply for rule
-        // const itemsToApplyRules = cartList.find(c => c.code === r.adCode);
-        
-        const specialRule = r.dealSpecs.find(ds => ds.type === 'DISCOUNT');
-        if(specialRule) {
-            newCartList = cartList.map(c => {
-                if(r.adCode === c.code) {
-                    c.originalPrice = c.price;
-                    c.price = specialRule.specs.discountPrice;
-                }
-                return c;
-            });
-        }
-    });
-    return cartList;
-  };
-  const getTotal = useCallback((cartList, rules) => {
-    return 1000;
-  });
-
+  
   useEffect(() => {
     const loginDetails = GetSessionStorage("isAuth");
     const r = GetSessionStorage("rule");
@@ -67,10 +46,10 @@ const CheckOutPage = (props) => {
 
   useEffect(() => {
     if(rules) {
-        const cl = mapCartListByRules(props.shoppingCart, rules.rules);
+        const cl = mapCartListByRules(cartList, rules.rules);
         setCartList(cl);
     }
-  })
+  }, [rules]);
 
   return (
     <div className="container">
@@ -98,7 +77,7 @@ const CheckOutPage = (props) => {
             ))}
           </CheckOutList>
           <Total>
-            Total : ${getTotal(props.shoppingCart, rules)}
+            Total : ${getTotal(cartList, rules)}
           </Total>
         </CheckOutListTable>
       </div>
