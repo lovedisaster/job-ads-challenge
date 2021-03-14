@@ -10,15 +10,15 @@ import {
   Description,
   Price,
   Total,
-  CrossedPrice
+  CrossedPrice,
 } from "./CheckOut.styles";
 import { GetRules } from "../../api/ApiConsumer";
 import {
-    DeepClone,
+  DeepClone,
   GetSessionStorage,
   SetSessionStorageRule,
 } from "../../utils/CommonUtils";
-import {mapCartListByRules, getTotal} from './CheckOutFunctions';
+import { mapCartListByRules, getTotal } from "./CheckOutFunctions";
 
 const CheckOutPage = (props) => {
   let [rules, setRules] = useState(null);
@@ -28,7 +28,6 @@ const CheckOutPage = (props) => {
     props.dispatch({ type: ActionTypes.GO_TO_STEP, payload: 1 });
   });
 
-  
   useEffect(() => {
     const loginDetails = GetSessionStorage("isAuth");
     const r = GetSessionStorage("rule");
@@ -45,9 +44,9 @@ const CheckOutPage = (props) => {
   }, []);
 
   useEffect(() => {
-    if(rules) {
-        const cl = mapCartListByRules(cartList, rules.rules);
-        setCartList(cl);
+    if (rules) {
+      const cl = mapCartListByRules(cartList, rules.rules);
+      setCartList(cl);
     }
   }, [rules]);
 
@@ -72,13 +71,16 @@ const CheckOutPage = (props) => {
               >
                 <Name>{item.name}</Name>
                 <Description>{item.description}</Description>
-                <Price>${item.price} {item.originalPrice && <CrossedPrice>${item.originalPrice}</CrossedPrice>}</Price>
+                <Price>
+                  ${item.price}{" "}
+                  {item.originalPrice && (
+                    <CrossedPrice>${item.originalPrice}</CrossedPrice>
+                  )}
+                </Price>
               </Item>
             ))}
           </CheckOutList>
-          <Total>
-            Total : ${getTotal(cartList, rules)}
-          </Total>
+          <Total>Total : ${getTotal(cartList, rules)}</Total>
         </CheckOutListTable>
       </div>
     </div>

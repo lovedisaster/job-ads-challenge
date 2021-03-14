@@ -22,16 +22,16 @@ export const mapCartListByRules = (cartList, rules) => {
       });
     }
 
-    //Validate for extraRules
+    //Validate for extra rules
     const extraRule = r.dealSpecs.find((ds) => ds.type === DEALTYPES.EXTRA);
     if (extraRule) {
       const allItemsApplyExtraRules = newCartList.filter(
-        c => r.adCode === c.code
+        (c) => r.adCode === c.code
       );
 
       if (allItemsApplyExtraRules && allItemsApplyExtraRules.length > 0) {
         const complimentaryCount =
-          (Math.floor(allItemsApplyExtraRules.length / extraRule.specs.buy)) *
+          Math.floor(allItemsApplyExtraRules.length / extraRule.specs.buy) *
           (extraRule.specs.take - extraRule.specs.buy);
         //Apply extra rules
         if (complimentaryCount) {
@@ -46,7 +46,6 @@ export const mapCartListByRules = (cartList, rules) => {
     }
   });
   return newCartList;
-
 };
 
 export const getTotal = (cartList) => {

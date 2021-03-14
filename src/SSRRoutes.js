@@ -5,7 +5,7 @@ import Home from "./components/home/Home";
 export const SSRRoutes = () => {
   return (
     <StaticRouter>
-      <Home/>
+      <Home />
     </StaticRouter>
   );
 };
