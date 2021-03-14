@@ -29,11 +29,10 @@ const SingInPage = (props) => {
   };
 
   const logIn = () => {
-    const clients = props.context.state.initState.clients.map(c => c.clientCode);
-    Login(clients, user)
+    Login(user)
       .then((result) => {
         if (result) {
-            SetAuth();
+          SetAuth(user);
           submit({ userName: user, authenticated: result });
         } else {
           //Popup error handling here or log in errors
@@ -45,10 +44,10 @@ const SingInPage = (props) => {
   };
 
   useEffect(() => {
-      if(GetSessionStorage("isAuth") && GetSessionStorage("isAuth").isAuth) {
-        props.context.dispatch({ type: ActionTypes.NEXT_STEP });
-      }
-  },[])
+    if (GetSessionStorage("isAuth") && GetSessionStorage("isAuth").isAuth) {
+      props.context.dispatch({ type: ActionTypes.NEXT_STEP });
+    }
+  }, []);
 
   return (
     <div className="container">
@@ -65,10 +64,8 @@ const SingInPage = (props) => {
       <div className="row text-center">
         <SignInForm>
           <small>
-            Available accounts for now : 
-            {
-                props.context.state.initState.clients.map(client => `${client.clientCode} (${client.fullName}) | `)
-            }
+            Hint: Available accounts: SB - SecondBite, ACR - Axil Coffee
+            Roasters, MY - MYER
           </small>
 
           <InputField

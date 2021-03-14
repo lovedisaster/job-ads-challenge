@@ -4,6 +4,7 @@ import StateProvider from '../../src/StateProvider';
 import {SSRRoutes} from '../../src/SSRRoutes';
 import React from "react";
 import {initState} from "../mockData/mockData";
+import router from "../apis/apis";
 
 const routers = function(app) {
 
@@ -25,6 +26,7 @@ const routers = function(app) {
         next();
       });
 
+      app.use('/api', router);
 
       return app;
   }

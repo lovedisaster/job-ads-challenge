@@ -1,6 +1,9 @@
-export const Login = (clients, userName) => {
-    return new Promise((res, rej) => {
-        res(clients.includes(userName));
-        rej(new Error("Log in error"));
-    })
+import axios from "axios"
+
+export const Login = (userName) => {
+    return axios.get(`/api/login/${userName}`);
+}
+
+export const GetRules = (userName) => {
+    return axios.get(`/api/rules/${userName}`);
 }

@@ -8,7 +8,7 @@ const CheckOut = props => {
         <StateContext.Consumer>
             {
                 context => {
-                    return <CheckOutPage dispatch={context.dispatch} />
+                    return <CheckOutPage dispatch={context.dispatch} shoppingCart={context.state.shoppingCart}/>
                 }
             }
         </StateContext.Consumer>

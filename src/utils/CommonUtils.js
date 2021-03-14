@@ -10,7 +10,16 @@ export const SetAuth = (name) => {
   if (sessionStorage !== undefined) {
     sessionStorage.setItem(
       "isAuth",
-      JSON.stringify({ isAuth: true, userName: name })
+      JSON.stringify({ isAuth: true, clientCode: name })
+    );
+  }
+};
+
+export const SetSessionStorageRule = (rule) => {
+  if (sessionStorage !== undefined) {
+    sessionStorage.setItem(
+      "rule",
+      JSON.stringify(rule)
     );
   }
 };
