@@ -22,7 +22,7 @@ export const mapCartListByRules = (cartList, rules) => {
       });
     }
 
-    //Validate for extra rules
+    //Validate for extra rules.
     const extraRule = r.dealSpecs.find((ds) => ds.type === DEALTYPES.EXTRA);
     if (extraRule) {
       const allItemsApplyExtraRules = newCartList.filter(
@@ -33,7 +33,7 @@ export const mapCartListByRules = (cartList, rules) => {
         const complimentaryCount =
           Math.floor(allItemsApplyExtraRules.length / extraRule.specs.buy) *
           (extraRule.specs.take - extraRule.specs.buy);
-        //Apply extra rules
+        //Apply extra rules.
         if (complimentaryCount) {
           let complementaryAdItem = DeepClone(allItemsApplyExtraRules[0]);
           complementaryAdItem.originalPrice = complementaryAdItem.price;
