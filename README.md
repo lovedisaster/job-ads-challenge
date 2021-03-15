@@ -7,7 +7,7 @@
 4. Run server : "npm run server" 
 5. Run test : "npm run test"
 
-## What I have not done
+## What I haven't covered
 1. Full responsive solution.
 2. Authorisation when login / authentication for later api calls.
 3. Full test coverage.
