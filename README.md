@@ -14,6 +14,7 @@
 4. Production build.
 5. Typescript.
 6. Proper way of fetching data from database. 
+7. Checkout to payment which is not specified. 
 
 ## What I have done
 1. React SSR for SEO and marketing benefits of the product page. 
