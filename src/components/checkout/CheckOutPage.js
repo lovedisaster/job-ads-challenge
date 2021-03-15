@@ -2,23 +2,14 @@ import React, { useCallback, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import ActionTypes from "../../actions/ActionTypes";
 import { SecondaryButton } from "../shared/atoms/buttons/Buttons";
-import {
-  CheckOutListTable,
-  CheckOutList,
-  Item,
-  Name,
-  Description,
-  Price,
-  Total,
-  CrossedPrice,
-} from "./CheckOut.styles";
 import { GetRules } from "../../api/ApiConsumer";
 import {
   DeepClone,
   GetSessionStorage,
   SetSessionStorageRule,
 } from "../../utils/CommonUtils";
-import { mapCartListByRules, getTotal } from "./CheckOutFunctions";
+import { mapCartListByRules } from "./CheckOutFunctions";
+import CheckOutForm from "./CheckOutForm";
 
 const CheckOutPage = (props) => {
   let [rules, setRules] = useState(null);
@@ -63,30 +54,15 @@ const CheckOutPage = (props) => {
         />
       </div>
       <div className="row">
-        <CheckOutListTable>
-          <CheckOutList>
-            {cartList.map((item) => (
-              <Item
-                key={`${item.name}${Math.random().toString(36).substring(7)}`}
-              >
-                <Name>{item.name}</Name>
-                <Description>{item.description}</Description>
-                <Price>
-                  ${item.price}{" "}
-                  {item.originalPrice && (
-                    <CrossedPrice>${item.originalPrice}</CrossedPrice>
-                  )}
-                </Price>
-              </Item>
-            ))}
-          </CheckOutList>
-          <Total>Total : ${getTotal(cartList, rules)}</Total>
-        </CheckOutListTable>
+        <CheckOutForm cartList={cartList} rules={rules} />
       </div>
     </div>
   );
 };
 
-CheckOutPage.propTypes = {};
+CheckOutPage.propTypes = {
+  dispatch: PropTypes.func,
+  shoppingCart: PropTypes.array,
+};
 
 export default CheckOutPage;
