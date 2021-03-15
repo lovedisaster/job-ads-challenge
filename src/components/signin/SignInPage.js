@@ -8,7 +8,7 @@ import { SignInForm } from "./SignIn.styles";
 import { Login } from "../../api/ApiConsumer";
 import { SetAuth, GetSessionStorage } from "../../utils/CommonUtils";
 
-const SingInPage = (props) => {
+const SignInPage = (props) => {
   let userNameRef = useRef(null);
   let [user, setUser] = useState("");
 
@@ -88,6 +88,6 @@ const SingInPage = (props) => {
   );
 };
 
-SingInPage.propTypes = {};
+SignInPage.propTypes = {};
 
-export default SingInPage;
+export default SignInPage;

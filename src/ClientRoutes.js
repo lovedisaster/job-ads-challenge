@@ -15,7 +15,7 @@ export const ClientRoutes = () => {
           <Home />
         </Route>
         <Route exact={true} path="/signin">
-          <SingIn />
+          <SignIn />
         </Route>
         <Route exact={true} path="/checkout">
           <CheckOut />

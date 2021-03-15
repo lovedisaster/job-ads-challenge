@@ -6,7 +6,8 @@
   "scripts": {
     "clean": "rimraf ./dist/ && rimraf ./server/main-server.js",
     "server": "nodemon ./server/main-server.js",
-    "start": "webpack --mode development --env=Development --watch"
+    "start": "webpack --mode development --env=Development --watch",
+    "test": "jest --watchAll"
   },
   "author": "",
   "license": "ISC",
@@ -49,6 +50,7 @@
     "@testing-library/react": "11.2.3",
     "jest": "26.6.3",
     "jest-dom": "4.0.0",
+    "jest-transform-stub": "^2.0.0",
     "nodemon": "2.0.7",
     "react-test-renderer": "17.0.1"
   }

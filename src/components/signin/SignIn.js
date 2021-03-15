@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import SignInPage from './SignInPage';
 import {StateContext} from '../../StateProvider';
 
-const SingIn = props => {
+const SignIn = props => {
     return (
         <StateContext.Consumer>
             {
@@ -15,8 +15,8 @@ const SingIn = props => {
     );
 };
 
-SingIn.propTypes = {
+SignIn.propTypes = {
     
 };
 
-export default SingIn;
+export default SignIn;

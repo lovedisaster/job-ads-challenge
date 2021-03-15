@@ -6,15 +6,15 @@ import ActionTypes from "../../actions/ActionTypes";
 
 const HomePage = (props) => {
   const buyNowOnclick = useCallback((stepData) => {
-    props.context.dispatch({
+    props.dispatch({
       type: ActionTypes.SAVE_STEP_DATA,
       payload: stepData,
     });
-    props.context.dispatch({
+    props.dispatch({
       type: ActionTypes.ADD_TO_CART,
       payload: stepData,
     });
-    props.context.dispatch({ type: ActionTypes.NEXT_STEP });
+    props.dispatch({ type: ActionTypes.NEXT_STEP });
   });
 
   return (
@@ -29,7 +29,7 @@ const HomePage = (props) => {
       <br />
       <br />
       <div className="row">
-        {props.context.state.initState.ads.map((item) => {
+        {props.state.initState.ads.map((item) => {
           return (
             <div key={item.code} className="col-4 text-center">
               <AdCard>
