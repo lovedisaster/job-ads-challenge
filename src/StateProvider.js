@@ -4,6 +4,7 @@ import Reducer from "./reducer/Reducer";
 import { InitSteps, GetStepByIndex } from "./StepConfig";
 import { history } from "./ClientRoutes";
 import { GetSessionStorage } from "./utils/CommonUtils";
+import Loading from "./components/shared/molecule/loading/Loading"; 
 
 export const StateContext = React.createContext("globalContext");
 
@@ -17,6 +18,7 @@ const StateProvider = (props) => {
   const currentStep = GetStepByIndex(1, InitSteps);
   const [state, dispatch] = useReducer(Reducer, {
     initState: props.initState,
+    loading: true,
     currentStep: 1,
     currentPath: currentStep ? currentStep.path : "/home",
     stepState: InitSteps,
@@ -29,6 +31,7 @@ const StateProvider = (props) => {
 
   return (
     <StateContext.Provider value={{ state, dispatch }}>
+      <Loading loading={state.loading} />
       {props.children}
     </StateContext.Provider>
   );

@@ -1,10 +1,11 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import PropTypes from "prop-types";
 import { AdCard, Heading } from "./Home.style";
 import { Button } from "../shared/atoms/buttons/Buttons";
 import ActionTypes from "../../actions/ActionTypes";
 
 const HomePage = (props) => {
+
   const buyNowOnclick = useCallback((stepData) => {
     props.dispatch({
       type: ActionTypes.SAVE_STEP_DATA,
@@ -16,6 +17,10 @@ const HomePage = (props) => {
     });
     props.dispatch({ type: ActionTypes.NEXT_STEP });
   });
+
+  useEffect(() => {
+    props.dispatch({type: ActionTypes.PAGE_LOADED});
+  },[]);
 
   return (
     <div className="container">

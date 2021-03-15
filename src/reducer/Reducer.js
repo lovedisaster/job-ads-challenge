@@ -38,6 +38,15 @@ const Reducer = (state, action) => {
       cs = GetStepByIndex(action.payload, newState.stepState );
       newState.currentPath = cs.path;
       return newState;
+    
+    case ActionTypes.PAGE_LOADED: 
+      newState.loading = false;
+      return newState;
+
+    case ActionTypes.PAGE_LOADING: 
+      newState.loading = true;
+      return newState;
+
     default:
       return state;
   }

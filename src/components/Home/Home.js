@@ -7,8 +7,6 @@ const Home = (props) => {
   return (
     <StateContext.Consumer>
       {(context) => {
-          console.log(context);
-
         return <HomePage dispatch={context.dispatch} state={context.state} />;
       }}
     </StateContext.Consumer>
