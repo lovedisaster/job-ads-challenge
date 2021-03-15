@@ -104,4 +104,6 @@ dist
 .tern-port
 
 # build files
-server/main-server.js
+**/main-server.js
+.DS_Store
+.vscode

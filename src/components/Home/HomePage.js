@@ -29,7 +29,7 @@ const HomePage = (props) => {
       <br />
       <br />
       <br />
-      <Heading className="text-center">Job Ads</Heading>
+      <Heading className="text-center">Select your advertisement</Heading>
       <br />
       <br />
       <br />
