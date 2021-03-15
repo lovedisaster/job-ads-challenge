@@ -1,7 +1,7 @@
 import React from "react";
 import { Router, Switch, Route } from "react-router-dom";
 import Home from "./components/home/Home";
-import SingIn from "./components/singin/SingIn";
+import SignIn from "./components/signin/SignIn";
 import CheckOut from "./components/checkout/CheckOut";
 import { createBrowserHistory } from "history";
 

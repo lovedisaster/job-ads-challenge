@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SingInPage from './SingInPage';
+import SignInPage from './SignInPage';
 import {StateContext} from '../../StateProvider';
 
 const SingIn = props => {
@@ -8,7 +8,7 @@ const SingIn = props => {
         <StateContext.Consumer>
             {
                 context => {
-                    return <SingInPage context={context}/>
+                    return <SignInPage context={context}/>
                 }
             }
         </StateContext.Consumer>

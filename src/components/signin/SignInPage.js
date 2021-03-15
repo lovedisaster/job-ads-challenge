@@ -4,7 +4,7 @@ import { SecondaryButton } from "../shared/atoms/buttons/Buttons";
 import ActionTypes from "../../actions/ActionTypes";
 import InputField from "../shared/atoms/inputs/Inputs";
 import { Button } from "../shared/atoms/buttons/Buttons";
-import { SignInForm } from "./SingIn.styles";
+import { SignInForm } from "./SignIn.styles";
 import { Login } from "../../api/ApiConsumer";
 import { SetAuth, GetSessionStorage } from "../../utils/CommonUtils";
 
