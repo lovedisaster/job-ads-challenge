@@ -5,7 +5,8 @@
 2. Install : "npm install / yarn install" 
 3. Run build : "npm start" 
 4. Run server : "npm run server" 
-5. Run test : "npm run test"
+5. To run the site : http://localhost:3001/home 
+6. To run test : "npm run test"
 
 ## What I haven't covered
 1. Full responsive solution.
