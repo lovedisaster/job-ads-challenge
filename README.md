@@ -7,6 +7,9 @@
 4. Run server : "npm run server" 
 5. To run the site : http://localhost:3001/home 
 6. To run test : "npm run test"
+7. Endpoints provides dummy data (No real authorisation / authentication implemented) : 
+   #### 1> http://localhost:3001/api/login/:clientCode  (SB / ACR / MY) 
+   #### 2> http://localhost:3001/api/rules/:clientCode  (SB / ACR / MY) 
 
 ## What I haven't covered
 1. Full responsive solution.
