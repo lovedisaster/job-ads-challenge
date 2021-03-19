@@ -107,3 +107,4 @@ dist
 **/main-server.js
 .DS_Store
 .vscode
+*.snap
