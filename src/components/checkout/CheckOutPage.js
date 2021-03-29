@@ -1,34 +1,34 @@
-import React, { useCallback, useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import ActionTypes from "../../actions/ActionTypes";
-import { SecondaryButton } from "../shared/atoms/buttons/Buttons";
-import { GetRules } from "../../api/ApiConsumer";
+import React, { useCallback, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import ActionTypes from '../../actions/ActionTypes';
+import { SecondaryButton } from '../shared/atoms/buttons/Buttons';
+import { GetRules } from '../../api/ApiConsumer';
 import {
-  DeepClone,
-  GetSessionStorage,
-  SetSessionStorageRule,
-} from "../../utils/CommonUtils";
-import { mapCartListByRules } from "./CheckOutFunctions";
-import CheckOutForm from "./CheckOutForm";
+  deepClone,
+  getSessionStorage,
+  setSessionStorageRule,
+} from '../../utils/CommonUtils';
+import { mapCartListByRules } from './CheckOutFunctions';
+import CheckOutForm from './CheckOutForm';
 
 const CheckOutPage = (props) => {
   let [rules, setRules] = useState(null);
-  let [cartList, setCartList] = useState(DeepClone(props.shoppingCart));
+  let [cartList, setCartList] = useState(deepClone(props.shoppingCart));
 
   const buyMoreOnClick = useCallback(() => {
     props.dispatch({ type: ActionTypes.GO_TO_STEP, payload: 1 });
   });
 
   useEffect(() => {
-    const loginDetails = GetSessionStorage("isAuth");
-    const r = GetSessionStorage("rule");
+    const loginDetails = getSessionStorage('isAuth');
+    const r = getSessionStorage('rule');
     if (r) {
       setRules(r);
     } else {
       GetRules(loginDetails.clientCode)
         .then((r) => {
           setRules(r.data);
-          SetSessionStorageRule(r.data);
+          setSessionStorageRule(r.data);
         })
         .catch((e) => {});
     }

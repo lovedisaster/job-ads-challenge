@@ -1,49 +1,46 @@
-import _ from "lodash";
-import URI from "urijs";
+import _ from 'lodash';
+import URI from 'urijs';
 
-export const DeepClone = (o) => {
+export const deepClone = (o) => {
   const output = _.cloneDeep(o);
   return output;
 };
 
-export const SetAuth = (name) => {
+export const setAuth = (name) => {
   if (sessionStorage !== undefined) {
     sessionStorage.setItem(
-      "isAuth",
+      'isAuth',
       JSON.stringify({ isAuth: true, clientCode: name })
     );
   }
 };
 
-export const SetSessionStorageRule = (rule) => {
+export const setSessionStorageRule = (rule) => {
   if (sessionStorage !== undefined) {
-    sessionStorage.setItem(
-      "rule",
-      JSON.stringify(rule)
-    );
+    sessionStorage.setItem('rule', JSON.stringify(rule));
   }
 };
 
-export const GetSessionStorage = (item) => {
-  if (!IsEmptyObject(sessionStorage)) {
+export const getSessionStorage = (item) => {
+  if (!isEmptyObject(sessionStorage)) {
     return JSON.parse(sessionStorage.getItem(item));
   } else {
     return null;
   }
 };
 
-export const SetShoppingCart = (shoppingCartList) => {
+export const setShoppingCart = (shoppingCartList) => {
   if (sessionStorage !== undefined) {
-    sessionStorage.setItem("shoppingCart", JSON.stringify(shoppingCartList));
+    sessionStorage.setItem('shoppingCart', JSON.stringify(shoppingCartList));
   }
 };
 
-export const IsEmptyObject = (obj) => {
+export const isEmptyObject = (obj) => {
   return (
-    JSON.stringify(obj) === "{}" ||
-    JSON.stringify(obj) === "[]" ||
-    JSON.stringify(obj) === "null" ||
-    obj === "" ||
+    JSON.stringify(obj) === '{}' ||
+    JSON.stringify(obj) === '[]' ||
+    JSON.stringify(obj) === 'null' ||
+    obj === '' ||
     obj === null ||
     obj === undefined
   );

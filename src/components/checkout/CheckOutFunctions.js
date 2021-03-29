@@ -1,12 +1,12 @@
-import { DeepClone } from "../../utils/CommonUtils";
+import { deepClone } from '../../utils/CommonUtils';
 
 const DEALTYPES = {
-  EXTRA: "EXTRA",
-  DISCOUNT: "DISCOUNT",
+  EXTRA: 'EXTRA',
+  DISCOUNT: 'DISCOUNT',
 };
 
 export const mapCartListByRules = (cartList, rules) => {
-  let newCartList = DeepClone(cartList);
+  let newCartList = deepClone(cartList);
   rules.forEach((r) => {
     const specialRule = r.dealSpecs.find(
       (ds) => ds.type === DEALTYPES.DISCOUNT
@@ -35,7 +35,7 @@ export const mapCartListByRules = (cartList, rules) => {
           (extraRule.specs.take - extraRule.specs.buy);
         //Apply extra rules.
         if (complimentaryCount) {
-          let complementaryAdItem = DeepClone(allItemsApplyExtraRules[0]);
+          let complementaryAdItem = deepClone(allItemsApplyExtraRules[0]);
           complementaryAdItem.originalPrice = complementaryAdItem.price;
           complementaryAdItem.price = 0;
           for (let i = 0; i < complimentaryCount; i++) {

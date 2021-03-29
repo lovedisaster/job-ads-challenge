@@ -1,16 +1,16 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import PropTypes from "prop-types";
-import { SecondaryButton } from "../shared/atoms/buttons/Buttons";
-import ActionTypes from "../../actions/ActionTypes";
-import InputField from "../shared/atoms/inputs/Inputs";
-import { Button } from "../shared/atoms/buttons/Buttons";
-import { SignInForm } from "./SignIn.styles";
-import { Login } from "../../api/ApiConsumer";
-import { SetAuth, GetSessionStorage } from "../../utils/CommonUtils";
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import PropTypes from 'prop-types';
+import { SecondaryButton } from '../shared/atoms/buttons/Buttons';
+import ActionTypes from '../../actions/ActionTypes';
+import InputField from '../shared/atoms/inputs/Inputs';
+import { Button } from '../shared/atoms/buttons/Buttons';
+import { SignInForm } from './SignIn.styles';
+import { Login } from '../../api/ApiConsumer';
+import { setAuth, getSessionStorage } from '../../utils/CommonUtils';
 
 const SignInPage = (props) => {
   let userNameRef = useRef(null);
-  let [user, setUser] = useState("");
+  let [user, setUser] = useState('');
 
   const backOnClick = useCallback(() => {
     props.context.dispatch({ type: ActionTypes.PRE_STEP });
@@ -32,7 +32,7 @@ const SignInPage = (props) => {
     Login(user)
       .then((result) => {
         if (result) {
-          SetAuth(user);
+          setAuth(user);
           submit({ userName: user, authenticated: result });
         } else {
           //Popup error handling here or log in errors
@@ -44,7 +44,7 @@ const SignInPage = (props) => {
   };
 
   useEffect(() => {
-    if (GetSessionStorage("isAuth") && GetSessionStorage("isAuth").isAuth) {
+    if (getSessionStorage('isAuth') && getSessionStorage('isAuth').isAuth) {
       props.context.dispatch({ type: ActionTypes.NEXT_STEP });
     }
   }, []);
@@ -70,8 +70,8 @@ const SignInPage = (props) => {
 
           <InputField
             innerRef={userNameRef}
-            placeHolder={"User Name"}
-            name={"name"}
+            placeHolder={'User Name'}
+            name={'name'}
             keyPressHandler={setUserValue}
             onFocusHandler={setUserValue}
           />

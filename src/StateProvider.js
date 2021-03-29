@@ -1,17 +1,17 @@
-import React, { useEffect, useReducer } from "react";
-import PropTypes from "prop-types";
-import Reducer from "./reducer/Reducer";
-import { InitSteps, GetStepByIndex } from "./StepConfig";
-import { history } from "./ClientRoutes";
-import { GetSessionStorage } from "./utils/CommonUtils";
-import Loading from "./components/shared/molecule/loading/Loading"; 
+import React, { useEffect, useReducer } from 'react';
+import PropTypes from 'prop-types';
+import Reducer from './reducer/Reducer';
+import { InitSteps, GetStepByIndex } from './StepConfig';
+import { history } from './ClientRoutes';
+import { getSessionStorage } from './utils/CommonUtils';
+import Loading from './components/shared/molecule/loading/Loading';
 
-export const StateContext = React.createContext("globalContext");
+export const StateContext = React.createContext('globalContext');
 
 const StateProvider = (props) => {
   let shoppingCart =
-    CLIENT && GetSessionStorage("shoppingCart")
-      ? GetSessionStorage("shoppingCart")
+    CLIENT && getSessionStorage('shoppingCart')
+      ? getSessionStorage('shoppingCart')
       : [];
   let h = history;
 
@@ -20,7 +20,7 @@ const StateProvider = (props) => {
     initState: props.initState,
     loading: true,
     currentStep: 1,
-    currentPath: currentStep ? currentStep.path : "/home",
+    currentPath: currentStep ? currentStep.path : '/home',
     stepState: InitSteps,
     shoppingCart: shoppingCart,
   });

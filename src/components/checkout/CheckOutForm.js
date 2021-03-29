@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 import {
   CheckOutListTable,
   CheckOutList,
@@ -9,8 +9,8 @@ import {
   Price,
   Total,
   CrossedPrice,
-} from "./CheckOut.styles";
-import { getTotal } from "./CheckOutFunctions";
+} from './CheckOut.styles';
+import { getTotal } from './CheckOutFunctions';
 
 const CheckOutForm = ({ cartList, rules }) => {
   return (
@@ -21,7 +21,7 @@ const CheckOutForm = ({ cartList, rules }) => {
             <Name>{item.name}</Name>
             <Description>{item.description}</Description>
             <Price>
-              ${item.price}{" "}
+              ${item.price}{' '}
               {item.originalPrice && (
                 <CrossedPrice>${item.originalPrice}</CrossedPrice>
               )}
@@ -36,7 +36,7 @@ const CheckOutForm = ({ cartList, rules }) => {
 
 CheckOutForm.propTypes = {
   cartList: PropTypes.array,
-  rules: PropTypes.array,
+  rules: PropTypes.object,
 };
 
 export default CheckOutForm;
